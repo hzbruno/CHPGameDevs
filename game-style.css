@@ -1,0 +1,120 @@
+:root {
+  --gold: #DCC66B;
+  --dark: #181918;
+  --bronze: #AE9675;
+  --text-light: #f5f5f5;
+}
+
+body {
+  background: radial-gradient(circle at center, var(--dark) 0%, #0f0f0f 100%);
+  color: var(--text-light);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Contenedor centrado */
+#unity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Canvas reducido */
+canvas {
+  width: 1200px;
+  height: 675px;
+  max-width: 95%;
+  max-height: 80vh;
+  border: 3px solid var(--bronze);
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 0 20px rgba(220, 198, 107, 0.3);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Loading bar */
+#unity-loading-bar {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#unity-progress-bar-empty {
+  width: 320px;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--bronze);
+}
+
+#unity-progress-bar-full {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--bronze));
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+.loading-text {
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-top: 5px;
+}
+
+/* Botón fullscreen */
+.btn {
+  background: linear-gradient(90deg, var(--gold), var(--bronze));
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: var(--dark);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* Footer */
+#unity-footer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  padding: 15px;
+  background: var(--dark);
+  border-top: 2px solid var(--bronze);
+}
+
+#unity-build-title {
+  color: var(--bronze);
+  font-size: 0.85rem;
+}
+
+/* Mobile warning */
+#unity-mobile-warning {
+  position: fixed;
+  top: 20px;
+  background: rgba(174, 150, 117, 0.95);
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: var(--dark);
+  font-weight: bold;
+  z-index: 1000;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
