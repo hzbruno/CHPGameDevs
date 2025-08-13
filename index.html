@@ -10,15 +10,17 @@
 <body>
   <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" tabindex="-1"></canvas>
+
     <div id="unity-loading-bar">
       <div id="unity-progress-bar-empty">
         <div id="unity-progress-bar-full"></div>
       </div>
       <p class="loading-text">Cargando...</p>
     </div>
+
     <div id="unity-footer">
       <button id="unity-fullscreen-button" class="btn">Pantalla Completa</button>
-      <span id="unity-build-title">UTU Rush v1.0</span>
+      <span id="unity-build-title">UTU Rush v1.1</span>
     </div>
   </div>
 
@@ -33,14 +35,12 @@
       var div = document.createElement('div');
       div.innerHTML = msg;
       warningBanner.appendChild(div);
-      if (type == 'error') div.style = 'background: red; padding: 10px;';
-      else {
-        if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-        setTimeout(() => {
-          warningBanner.removeChild(div);
-          updateBannerVisibility();
-        }, 5000);
-      }
+      if (type == 'error') div.style = 'background: red; padding: 10px; border-radius:5px;';
+      else if (type == 'warning') div.style = 'background: yellow; padding: 10px; border-radius:5px;';
+      setTimeout(() => {
+        warningBanner.removeChild(div);
+        updateBannerVisibility();
+      }, 5000);
       updateBannerVisibility();
     }
 
@@ -65,7 +65,6 @@
       document.getElementsByTagName('head')[0].appendChild(meta);
       document.querySelector("#unity-container").className = "unity-mobile";
       canvas.className = "unity-mobile";
-      // config.devicePixelRatio = 1;
     } else {
       canvas.style.width = "1200px";
       canvas.style.height = "675px";
@@ -83,9 +82,7 @@
         document.querySelector("#unity-fullscreen-button").onclick = () => {
           unityInstance.SetFullscreen(1);
         };
-      }).catch((message) => {
-        alert(message);
-      });
+      }).catch((message) => { alert(message); });
     };
     document.body.appendChild(script);
   </script>
